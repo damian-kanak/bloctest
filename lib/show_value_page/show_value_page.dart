@@ -1,6 +1,6 @@
-import 'package:bloctest/show_value_page/show_value_bloc.dart';
-import 'package:bloctest/show_value_page/show_value_event.dart';
-import 'package:bloctest/show_value_page/show_value_state.dart';
+import 'package:bloctest/show_value_page/bloc/show_value_bloc.dart';
+import 'package:bloctest/show_value_page/bloc/show_value_event.dart';
+import 'package:bloctest/show_value_page/bloc/show_value_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
