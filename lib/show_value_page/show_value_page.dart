@@ -1,4 +1,4 @@
-import 'package:bloctest/show_value_page/show_value_bloc_state.dart';
+import 'package:bloctest/show_value_page/show_value_bloc.dart';
 import 'package:bloctest/show_value_page/show_value_event.dart';
 import 'package:bloctest/show_value_page/show_value_state.dart';
 import 'package:flutter/material.dart';
@@ -23,19 +23,6 @@ class ShowValuePage extends StatefulWidget {
 }
 
 class _ShowValuePageState extends State<ShowValuePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -76,16 +63,17 @@ class _ShowValuePageState extends State<ShowValuePage> {
                 'You have pushed this el button many times:',
               ),
               BlocBuilder<ShowValueBloc, ShowValueState>(builder: (_, state) => Text("data: ${state.counter}"),),
-
+              BlocBuilder<ShowValueBloc, ShowValueState>(builder:
+                  (context, state) => FloatingActionButton(
+                  onPressed: () => context.read<ShowValueBloc>().add(ShowValueEventIncrement()),
+                  child: const Icon(Icons.add),
+                ),
+              ),
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => context.read<ShowValueBloc>().add(ShowValueEventIncrement()),
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
-      ),
-    );
+       ), // This trailing comma makes auto-formatting nicer for build methods.
+      );
+
   }
 }
